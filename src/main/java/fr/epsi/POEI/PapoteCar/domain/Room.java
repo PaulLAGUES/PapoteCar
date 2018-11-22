@@ -1,19 +1,22 @@
 package fr.epsi.POEI.PapoteCar.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Room {
+public class Room implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;//Cle primaire
+
+    @OneToMany(mappedBy = "room")
     private List<Message> listeMessages;
+
+    @OneToMany(mappedBy = "room")
     private List<Utilisateur> utilisateurs;
+
     private Trajet voyage;
     private String nomSalleConversation;
 

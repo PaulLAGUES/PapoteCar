@@ -1,6 +1,8 @@
 package fr.epsi.POEI.PapoteCar.domain;
 
-public class Notation {
+import java.io.Serializable;
+
+public class Notation implements Serializable {
 
     private Utilisateur notant;
     private Utilisateur note;

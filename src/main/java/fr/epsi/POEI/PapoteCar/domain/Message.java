@@ -1,12 +1,10 @@
 package fr.epsi.POEI.PapoteCar.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Message {
+public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +12,9 @@ public class Message {
 
     private String expediteur;
     private String message;
+
+    @ManyToOne
+    private Room room;
 
     public Message() {
     }

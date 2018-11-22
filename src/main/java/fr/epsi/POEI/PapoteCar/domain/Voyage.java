@@ -1,21 +1,25 @@
 package fr.epsi.POEI.PapoteCar.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Voyage {
+
+public class Voyage implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;//Cle primaire
 
+    @OneToMany(mappedBy="voyage", cascade = CascadeType.ALL)
     private List<Trajet> trajets;
     private Utilisateur conducteur;
-    private Adresse adresseDépart;
+
+    @ManyToOne
+    private Adresse adresseDepart;
+
+    @ManyToOne
     private Adresse adresseArrivee;
 
     public Voyage() {
@@ -46,11 +50,11 @@ public class Voyage {
     }
 
     public Adresse getAdresseDépart() {
-        return adresseDépart;
+        return adresseDepart;
     }
 
     public void setAdresseDépart(Adresse adresseDépart) {
-        this.adresseDépart = adresseDépart;
+        this.adresseDepart = adresseDépart;
     }
 
     public Adresse getAdresseArrivee() {

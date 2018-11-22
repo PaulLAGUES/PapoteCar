@@ -20,6 +20,9 @@ public class Utilisateur implements Serializable {
     private String carteIdentite;
     private String permis;
 
+    @ManyToOne
+    private Room room;
+
     @Temporal( value = TemporalType.DATE)
     private Date dateDeNaissance;
 
@@ -71,5 +74,13 @@ public class Utilisateur implements Serializable {
 
     public void setDateDeNaissance(Date dateDeNaissance) {
         this.dateDeNaissance = dateDeNaissance;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }
