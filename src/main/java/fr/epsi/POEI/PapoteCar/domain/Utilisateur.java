@@ -11,6 +11,8 @@ public class Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;//Cle primaire
 
+    @ManyToOne
+    private Room room;
 
     private String prenom;
     private String nom;
@@ -20,8 +22,7 @@ public class Utilisateur implements Serializable {
     private String carteIdentite;
     private String permis;
 
-    @ManyToOne
-    private Room room;
+    
 
     @Temporal( value = TemporalType.DATE)
     private Date dateDeNaissance;
@@ -83,4 +84,37 @@ public class Utilisateur implements Serializable {
     public void setRoom(Room room) {
         this.room = room;
     }
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getCarteIdentite() {
+		return carteIdentite;
+	}
+
+	public String getPermis() {
+		return permis;
+	}
+
+	public Date getDateDeNaissance() {
+		return dateDeNaissance;
+	}
+    
 }
