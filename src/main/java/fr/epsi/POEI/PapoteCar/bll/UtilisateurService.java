@@ -19,6 +19,7 @@ public class UtilisateurService extends GenericService<UtilisateurRepository, Ut
 		List<Date> bornes = DateManipulations.getBeginAndEndDatesByAge(userAge);
 		
 		
+		
 		return new ArrayList<Utilisateur>();
 	}
 	
