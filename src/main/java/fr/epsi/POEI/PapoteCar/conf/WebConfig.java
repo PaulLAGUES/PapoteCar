@@ -25,10 +25,10 @@ public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-			.antMatchers("/**").hasAnyRole("ADMIN", "USER").and()
+			.antMatchers("/**").permitAll().and()
 			.httpBasic()
 			.and()
-			.csrf().disable();
+			.csrf().disable().cors().disable();
 	}
 	
 	@Override

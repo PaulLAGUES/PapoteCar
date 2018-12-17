@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import fr.epsi.POEI.PapoteCar.domain.Utilisateur;
 
 @RepositoryRestResource(path="users")
+@CrossOrigin(origins = "*")
 public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>/*extends GenericRepository<Utilisateur>*/ {
 	
 	@Query(
 		value = "SELECT * FROM Utilisateur u WHERE u.dateDeNaissance BETWEEN ? AND ?", 
 		nativeQuery = true
 	)
-	@CrossOrigin(origins = "*")
+
 	List<Utilisateur> findUtilisateurByDateDeNaissanceBetween(Date debut, Date fin);
 }
