@@ -5,11 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-public class WebConfig extends WebSecurityConfigurerAdapter {
+public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 	
 	@Autowired
 	public void configureGlobal( AuthenticationManagerBuilder auth) throws Exception {
@@ -22,7 +24,6 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.cors().and()
 		.authorizeRequests()
 			.antMatchers("/**").hasAnyRole("ADMIN", "USER").and()
 			.httpBasic()
@@ -30,5 +31,9 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable();
 	}
 	
+	@Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**");
+    }
 		
 }
