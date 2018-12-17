@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import fr.epsi.POEI.PapoteCar.domain.Utilisateur;
 
@@ -16,5 +17,6 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
 		value = "SELECT * FROM Utilisateur u WHERE u.dateDeNaissance BETWEEN ? AND ?", 
 		nativeQuery = true
 	)
+	@CrossOrigin(origins = "*")
 	List<Utilisateur> findUtilisateurByDateDeNaissanceBetween(Date debut, Date fin);
 }
