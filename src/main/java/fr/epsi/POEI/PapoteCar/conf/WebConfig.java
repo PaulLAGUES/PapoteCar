@@ -26,6 +26,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
 		http
 		.authorizeRequests()
 			.antMatchers("/**").permitAll().and()
+			//.antMatchers("/**").hasAnyRole("ADMIN", "USER").and()
 			.httpBasic()
 			.and()
 			.csrf().disable().cors().disable();
