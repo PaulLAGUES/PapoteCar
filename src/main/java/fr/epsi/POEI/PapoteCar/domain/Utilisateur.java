@@ -21,6 +21,7 @@ public class Utilisateur implements Serializable {
     private String email;
     private String carteIdentite;
     private String permis;
+    private String token;
 
     
 
@@ -44,6 +45,8 @@ public class Utilisateur implements Serializable {
     public void setId(long id) {
         this.id = id;
     }
+
+    public long getId() {return id; }
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
@@ -116,5 +119,9 @@ public class Utilisateur implements Serializable {
 	public Date getDateDeNaissance() {
 		return dateDeNaissance;
 	}
+
+    public String getToken() { return token; }
+
+    public void setToken(String token) { this.token = token; }
     
 }
